@@ -3,7 +3,7 @@
 
 require 'google/protobuf'
 
-require 'proto/logutil'
+require 'logutil'
 Google::Protobuf::DescriptorPool.generated_pool.build do
   add_message "vtctldata.ExecuteVtctlCommandRequest" do
     repeated :args, :string, 1

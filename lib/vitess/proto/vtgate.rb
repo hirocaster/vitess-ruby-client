@@ -3,9 +3,9 @@
 
 require 'google/protobuf'
 
-require 'proto/query'
-require 'proto/topodata'
-require 'proto/vtrpc'
+require 'query'
+require 'topodata'
+require 'vtrpc'
 Google::Protobuf::DescriptorPool.generated_pool.build do
   add_message "vtgate.Session" do
     optional :in_transaction, :bool, 1
@@ -80,8 +80,8 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
     optional :not_in_transaction, :bool, 8
   end
   add_message "vtgate.ExecuteEntityIdsRequest.EntityId" do
-    optional :xid_type, :enum, 1, "query.Type"
-    optional :xid_value, :bytes, 2
+    optional :type, :enum, 1, "query.Type"
+    optional :value, :bytes, 2
     optional :keyspace_id, :bytes, 3
   end
   add_message "vtgate.ExecuteEntityIdsResponse" do

@@ -53,9 +53,8 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
   end
   add_message "binlogdata.StreamKeyRangeRequest" do
     optional :position, :string, 1
-    optional :keyspace_id_type, :enum, 2, "topodata.KeyspaceIdType"
-    optional :key_range, :message, 3, "topodata.KeyRange"
-    optional :charset, :message, 4, "binlogdata.Charset"
+    optional :key_range, :message, 2, "topodata.KeyRange"
+    optional :charset, :message, 3, "binlogdata.Charset"
   end
   add_message "binlogdata.StreamKeyRangeResponse" do
     optional :binlog_transaction, :message, 1, "binlogdata.BinlogTransaction"

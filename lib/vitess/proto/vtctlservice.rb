@@ -3,7 +3,7 @@
 
 require 'google/protobuf'
 
-require 'proto/vtctldata'
+require 'vtctldata'
 Google::Protobuf::DescriptorPool.generated_pool.build do
 end
 

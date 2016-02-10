@@ -3,8 +3,8 @@
 
 require 'google/protobuf'
 
-require 'proto/topodata'
-require 'proto/vtrpc'
+require 'topodata'
+require 'vtrpc'
 Google::Protobuf::DescriptorPool.generated_pool.build do
   add_message "query.Target" do
     optional :keyspace, :string, 1
@@ -134,6 +134,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
     optional :binlog_players_count, :int32, 3
     optional :seconds_behind_master_filtered_replication, :int64, 4
     optional :cpu_usage, :double, 5
+    optional :qps, :double, 6
   end
   add_message "query.StreamHealthResponse" do
     optional :target, :message, 1, "query.Target"

@@ -16,22 +16,22 @@ module Vtgateservice
       self.unmarshal_class_method = :decode
       self.service_name = 'vtgateservice.Vitess'
 
-      rpc :Execute, ExecuteRequest, ExecuteResponse
-      rpc :ExecuteShards, ExecuteShardsRequest, ExecuteShardsResponse
-      rpc :ExecuteKeyspaceIds, ExecuteKeyspaceIdsRequest, ExecuteKeyspaceIdsResponse
-      rpc :ExecuteKeyRanges, ExecuteKeyRangesRequest, ExecuteKeyRangesResponse
-      rpc :ExecuteEntityIds, ExecuteEntityIdsRequest, ExecuteEntityIdsResponse
-      rpc :ExecuteBatchShards, ExecuteBatchShardsRequest, ExecuteBatchShardsResponse
-      rpc :ExecuteBatchKeyspaceIds, ExecuteBatchKeyspaceIdsRequest, ExecuteBatchKeyspaceIdsResponse
-      rpc :StreamExecute, StreamExecuteRequest, stream(StreamExecuteResponse)
-      rpc :StreamExecuteShards, StreamExecuteShardsRequest, stream(StreamExecuteShardsResponse)
-      rpc :StreamExecuteKeyspaceIds, StreamExecuteKeyspaceIdsRequest, stream(StreamExecuteKeyspaceIdsResponse)
-      rpc :StreamExecuteKeyRanges, StreamExecuteKeyRangesRequest, stream(StreamExecuteKeyRangesResponse)
-      rpc :Begin, BeginRequest, BeginResponse
-      rpc :Commit, CommitRequest, CommitResponse
-      rpc :Rollback, RollbackRequest, RollbackResponse
-      rpc :SplitQuery, SplitQueryRequest, SplitQueryResponse
-      rpc :GetSrvKeyspace, GetSrvKeyspaceRequest, GetSrvKeyspaceResponse
+      rpc :Execute, Vtgate::ExecuteRequest, Vtgate::ExecuteResponse
+      rpc :ExecuteShards, Vtgate::ExecuteShardsRequest, Vtgate::ExecuteShardsResponse
+      rpc :ExecuteKeyspaceIds, Vtgate::ExecuteKeyspaceIdsRequest, Vtgate::ExecuteKeyspaceIdsResponse
+      rpc :ExecuteKeyRanges, Vtgate::ExecuteKeyRangesRequest, Vtgate::ExecuteKeyRangesResponse
+      rpc :ExecuteEntityIds, Vtgate::ExecuteEntityIdsRequest, Vtgate::ExecuteEntityIdsResponse
+      rpc :ExecuteBatchShards, Vtgate::ExecuteBatchShardsRequest, Vtgate::ExecuteBatchShardsResponse
+      rpc :ExecuteBatchKeyspaceIds, Vtgate::ExecuteBatchKeyspaceIdsRequest, Vtgate::ExecuteBatchKeyspaceIdsResponse
+      rpc :StreamExecute, Vtgate::StreamExecuteRequest, stream(Vtgate::StreamExecuteResponse)
+      rpc :StreamExecuteShards, Vtgate::StreamExecuteShardsRequest, stream(Vtgate::StreamExecuteShardsResponse)
+      rpc :StreamExecuteKeyspaceIds, Vtgate::StreamExecuteKeyspaceIdsRequest, stream(Vtgate::StreamExecuteKeyspaceIdsResponse)
+      rpc :StreamExecuteKeyRanges, Vtgate::StreamExecuteKeyRangesRequest, stream(Vtgate::StreamExecuteKeyRangesResponse)
+      rpc :Begin, Vtgate::BeginRequest, Vtgate::BeginResponse
+      rpc :Commit, Vtgate::CommitRequest, Vtgate::CommitResponse
+      rpc :Rollback, Vtgate::RollbackRequest, Vtgate::RollbackResponse
+      rpc :SplitQuery, Vtgate::SplitQueryRequest, Vtgate::SplitQueryResponse
+      rpc :GetSrvKeyspace, Vtgate::GetSrvKeyspaceRequest, Vtgate::GetSrvKeyspaceResponse
     end
 
     Stub = Service.rpc_stub_class

@@ -124,9 +124,8 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
     optional :query, :string, 1
     optional :db_name, :string, 2
     optional :max_rows, :uint64, 3
-    optional :want_fields, :bool, 4
-    optional :disable_binlogs, :bool, 5
-    optional :reload_schema, :bool, 6
+    optional :disable_binlogs, :bool, 4
+    optional :reload_schema, :bool, 5
   end
   add_message "tabletmanagerdata.ExecuteFetchAsDbaResponse" do
     optional :result, :message, 1, "query.QueryResult"
@@ -134,7 +133,6 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
   add_message "tabletmanagerdata.ExecuteFetchAsAppRequest" do
     optional :query, :string, 1
     optional :max_rows, :uint64, 2
-    optional :want_fields, :bool, 3
   end
   add_message "tabletmanagerdata.ExecuteFetchAsAppResponse" do
     optional :result, :message, 1, "query.QueryResult"
