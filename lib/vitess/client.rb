@@ -1,13 +1,19 @@
 current_dir = File.expand_path(File.dirname(__FILE__))
-proto_dir   = File.join(current_dir + '/lib/vitessproto')
+proto_dir   = File.join(current_dir + '/proto')
+
 $LOAD_PATH.unshift(current_dir)
 $LOAD_PATH.unshift(proto_dir)
 
 require 'google/protobuf'
 
+require 'proto/vtctldata'
+
 require 'proto/query'
 require 'proto/vtgate'
 require 'proto/vtgateservice'
+
+
+require 'proto/vtgateservice_services'
 
 # load Vtctl
 require 'vtctl/client'
@@ -133,4 +139,3 @@ module Vitess
     end
   end
 end
-
