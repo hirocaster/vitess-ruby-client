@@ -41,7 +41,7 @@ module Vitess
 
       def initialize(host: '', keyspace: '')
         @default_keyspace = (keyspace == '' || keyspace.nil?) ? nil : keyspace
-        @vtctl_service = ::Vtctl::Stub.new(host)
+        @vtctl_service = ::Vtctl::Stub.new(host, :this_channel_is_insecure)
       end
 
       def execute(args)

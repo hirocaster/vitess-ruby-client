@@ -65,8 +65,7 @@ module Vitess
     attr_reader :vtgate_service, :last_id
 
     def initialize(host:'localhost:15002', default_sharding_type: :consistent_hashing, adapter: 'vitess', username: nil, flags: nil)
-      @vtgate_service = Vtgate::Stub.new(host)
-      @session        = Vtgate::Session.new
+      @vtgate_service = ::Vtgateservice::Vitess::Stub.new(host, :this_channel_is_insecure)
       @keyspace_translator = Vitess::KeyspaceTranslator.new(sharding_type: default_sharding_type)
     end
 
