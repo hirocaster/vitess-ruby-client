@@ -10,7 +10,7 @@ class Vitess::ClientIntegrationTest < Minitest::Test
   end
 
   def setup
-    vtgate = Vitess::Client.new(host:'192.168.99.100:15002')
+    vtgate = Vitess::Client.new(host:'192.168.99.100:15991', default_sharding_type: :id)
     vtgate.cursor(keyspace: 'test_keyspace', keyspace_ids: [0])
     vtgate.begin
     vtgate.query_with_keyspace_ids('delete from test_table')
@@ -19,7 +19,7 @@ class Vitess::ClientIntegrationTest < Minitest::Test
 
   def test_basic_selects_and_inserts
     insert_sql = 'insert into test_table(msg) values("mogemoge")'
-    vtgate     = Vitess::Client.new(host:'192.168.99.100:15002', default_sharding_type: :id)
+    vtgate     = Vitess::Client.new(host:'192.168.99.100:15991', default_sharding_type: :id)
     vtgate.cursor(keyspace: 'test_keyspace', keyspace_ids: [0])
 
     initial_resp = vtgate.query_with_keyspace_ids('SELECT * FROM test_table')
@@ -30,14 +30,13 @@ class Vitess::ClientIntegrationTest < Minitest::Test
     insert_resp = vtgate.query_with_keyspace_ids(insert_sql)
     assert insert_resp
     vtgate.commit
-
     select_resp = vtgate.query_with_keyspace_ids('SELECT * FROM test_table')
     assert_kind_of Fixnum, select_resp.result.rows.count, 'rows count should be a fixnum'
     assert_equal initial_row_count, select_resp.result.rows.count - 1, 'one row should be inserted'
   end
 
   def test_rollback
-    vtgate     = Vitess::Client.new(host:'192.168.99.100:15002', default_sharding_type: :id)
+    vtgate     = Vitess::Client.new(host:'192.168.99.100:15991', default_sharding_type: :id)
     vtgate.cursor(keyspace: 'test_keyspace', keyspace_ids: [0])
 
     vtgate.begin
@@ -53,7 +52,7 @@ class Vitess::ClientIntegrationTest < Minitest::Test
   end
 
   def test_delete_queries
-    vtgate = Vitess::Client.new(host:'192.168.99.100:15002', default_sharding_type: :id)
+    vtgate = Vitess::Client.new(host:'192.168.99.100:15991', default_sharding_type: :id)
     vtgate.cursor(keyspace: 'test_keyspace', keyspace_ids: [0])
 
     vtgate.begin
@@ -75,7 +74,7 @@ class Vitess::ClientIntegrationTest < Minitest::Test
   end
 
   def test_update_queries
-    vtgate = Vitess::Client.new(host:'192.168.99.100:15002', default_sharding_type: :id)
+    vtgate = Vitess::Client.new(host:'192.168.99.100:15991', default_sharding_type: :id)
     msg    = 'foobarboo'
     vtgate.cursor(keyspace: 'test_keyspace', keyspace_ids: [0])
 
@@ -98,7 +97,7 @@ class Vitess::ClientIntegrationTest < Minitest::Test
   end
 
   def test_vtgate_v3
-    vtgate = Vitess::Client.new(host:'192.168.99.100:15002', default_sharding_type: :id)
+    vtgate = Vitess::Client.new(host:'192.168.99.100:15991', default_sharding_type: :id)
     result_1 = vtgate.query("select * from user_uuids")
     assert_equal 0, result_1.result.rows.count
     result_1 = vtgate.query("select * from user_uuids where user_id = 1")

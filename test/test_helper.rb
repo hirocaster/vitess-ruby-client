@@ -27,9 +27,8 @@ config = {
     adapter: :vitess,
     host: 'localhost',
     database: 'test_keyspace',
-    vtgate_config: { host: '192.168.99.100:15002' },
-    vtctl_config:  { host: 'localhost:15999', keyspace: 'test_keyspace' }
+    vtgate_config: { host: '192.168.99.100:15001' },
+    vtctl_config:  { host: '192.168.99.100:15999', keyspace: 'test_keyspace' }
 }
 
 ActiveRecord::Base.establish_connection(config)
-
